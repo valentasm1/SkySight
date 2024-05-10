@@ -54,7 +54,7 @@ public class MeteaLtForecastClient : IForecastClient
             return new List<WeatherInfoDto>();
         }
 
-        var forecasts = new List<WeatherInfoDto>();
+        var forecastForCities = new List<WeatherInfoDto>();
         foreach (var place in request.Cities)
         {
             var forecast = await GetForecastForPlace(place);
@@ -64,10 +64,10 @@ public class MeteaLtForecastClient : IForecastClient
                 continue;
             }
 
-            forecasts.Add(forecast);
+            forecastForCities.Add(forecast);
         }
 
-        return forecasts;
+        return forecastForCities;
     }
 
     private async Task<WeatherInfoDto?> GetForecastForPlace(string place)
@@ -83,11 +83,8 @@ public class MeteaLtForecastClient : IForecastClient
         }
 
         var forecastType = placeForecastInfo.ForecastTypes.First().Type;
-        //https://api.meteo.lt/v1/places/vilnius/forecasts/long-term
 
         var placeForecastUrl = _meteoLtOptions.PlaceForecast(place).TrimEnd('/') + "/" + forecastType;
-
-
         var placeForecast = await _httpClient.GetFromJsonAsync<MeteoPlaceForecast>(placeForecastUrl, _serializerOptions);
 
         return MapToForecast(placeForecast);
