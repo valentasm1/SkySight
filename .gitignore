@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/Api/SkySight/.vs
+/src/Api/SkySight/SkySight/bin/Debug/net8.0
+/src/Api/SkySight/SkySight/obj
+*.user
