@@ -105,9 +105,9 @@ public class MeteaLtForecastClient : IForecastClient
             Place = placeForecast?.Place?.Name,
             Details = new WeatherInfoDetailsDto()
             {
-                Temperature = latest?.AirTemperature.ToString() ?? string.Empty,
+                Temperature = (latest?.AirTemperature.ToString() ?? string.Empty) + " \u00b0C",
                 Precipitation = latest?.ConditionCode ?? string.Empty,
-                WindSpeed = latest?.WindSpeed.ToString() ?? string.Empty
+                WindSpeed = (latest?.WindSpeed.ToString() ?? string.Empty) + " m/s"
             }
         };
 

@@ -6,3 +6,4 @@
 /src/Api/SkySight/SkySight/bin/Debug/net8.0
 /src/Api/SkySight/SkySight/obj
 *.user
+/.vs
